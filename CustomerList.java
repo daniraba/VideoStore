@@ -18,7 +18,7 @@ public class CustomerList {
     public void insert(Customer customer) {
         if (customer == null) {
             System.out.println("Cannot insert null customer");
-            return;
+            return;                                                         
         }
         Node newNode = new Node(customer);
 
