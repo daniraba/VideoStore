@@ -8,4 +8,23 @@ public class Customer {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer: " + firstName + " " + lastName + ", Phone Number: " + phone;
+    }
 }
+
