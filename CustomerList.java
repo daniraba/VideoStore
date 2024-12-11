@@ -15,7 +15,7 @@ public class CustomerList {
         }
     }
 
-    public void insert(Customer customer) {
+    public void insert(Customer customer) {  //runtime: O(n)
         if (customer == null) {
             System.out.println("Cannot insert null customer");
             return;                                                         
@@ -45,7 +45,7 @@ public class CustomerList {
         current.next = newNode;
     }
 
-    public void print() {
+    public void print() { //runtime: O(n)
         Node current = head;
         while (current != null) {
             System.out.println(current.data);
@@ -53,7 +53,7 @@ public class CustomerList {
         }
     }
 
-    public boolean contains(String phoneNumber) {
+    public boolean contains(String phoneNumber) { //runtime: O(n)
         if(head == null) return false;
         Node current = head;
         while (current != null) {
@@ -65,7 +65,7 @@ public class CustomerList {
         return false;
     }
 
-    public int count() {
+    public int count() { //runtime: O(n)
         int total = 0;
         Node current = head;
         while (current != null) {
@@ -75,7 +75,7 @@ public class CustomerList {
         return total;
     }
 
-    public boolean delete(String phone) {
+    public boolean delete(String phone) { //runtime: O(n)
         if (head == null) return false;
 
         if (head.data.getPhone().equals(phone)) {

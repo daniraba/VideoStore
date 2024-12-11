@@ -6,4 +6,7 @@ public class Movie {
         this.barcode = barcode;
         this.movieName = movieName;
     }
+    public String getTitle() {
+        return movieName;
+    }
 }

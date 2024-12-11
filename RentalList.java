@@ -1,6 +1,6 @@
 public class RentalList {
     private Customer customer;
-    private Movie movie; // Reference to a Movie object
+    private Movie movie; 
     private String rentalDate;
     private String returnDate;
 
