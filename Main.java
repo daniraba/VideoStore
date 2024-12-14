@@ -60,11 +60,12 @@ public class Main {
                     CustomerList.Node current = customers.head;
                     while (current != null) {
                         if (current.data.getPhone().equals(rentPhone)) {
-                            customer = current.data;  //
+                            customer = current.data;  // get the customer data (full name) according to their phone number
                             break;
                         }
                         current = current.next;
                     }
+
                     System.out.print("Enter movie barcode: ");
                     String rentBarcode = scanner.nextLine();
                     Movie movieToRent = movies.searchBarcode(rentBarcode);
