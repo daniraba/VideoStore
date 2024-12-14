@@ -9,4 +9,14 @@ public class Movie {
     public String getTitle() {
         return movieName;
     }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie: " + movieName + ", Barcode: " + barcode;
+    }
+
 }

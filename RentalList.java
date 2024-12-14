@@ -1,16 +1,11 @@
 public class RentalList {
     private Customer customer;
-    private Movie movie; 
-    private String rentalDate;
-    private String returnDate;
+    private Movie movie;
 
-    public RentalList(Customer customer, Movie movie, String rentalDate, String returnDate) {
+    public RentalList(Customer customer, Movie movie) {
         this.customer = customer;
         this.movie = movie;
-        this.rentalDate = rentalDate;
-        this.returnDate = returnDate;
     }
-
     public Movie getMovie() {
         return movie;
     }
@@ -21,6 +16,6 @@ public class RentalList {
 
     @Override
     public String toString() {
-        return customer.getFirstName() + " rented " + movie.getTitle() + " from " + rentalDate + " to " + returnDate;
-    }
+        return customer.getFirstName() + " is currently renting this movie. Their phone number is " + customer.getPhone() + ".";
+    }    
 }
