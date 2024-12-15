@@ -30,6 +30,10 @@ public class Main {
             if (choice == 1) {
                 System.out.print("Enter phone number: ");
                 String phone = scanner.nextLine();
+                if (phone.length() != 10) {
+                    System.out.println("That is not a valid phone number. Please reenter.");
+                    phone = scanner.nextLine();
+                }
                 System.out.print("Enter first name: ");
                 String firstName = scanner.nextLine();
                 System.out.print("Enter last name: ");
@@ -52,8 +56,9 @@ public class Main {
             if (choice == 3) {
                 System.out.print("Enter customer phone number: ");
                 String rentPhone = scanner.nextLine();
-                if (!customers.contains(rentPhone)) {
-                    System.out.println("Customer does not exist!");
+                if (!customers.contains(rentPhone) || rentPhone.length() != 10) {
+                    System.out.println("Customer does not exist or phone number is invalid. Please reenter.");
+                    rentPhone = scanner.nextLine();
                 }
                 Customer customer = null;
                 CustomerList.Node current = customers.head;
@@ -68,15 +73,21 @@ public class Main {
                 System.out.print("Enter movie barcode: ");
                 String rentBarcode = scanner.nextLine();
                 Movie movieToRent = movies.searchBarcode(rentBarcode);
-                if (movieToRent == null) {
-                    System.out.println("Movie not found!");
+                
+                while (movieToRent == null || rentBarcode.length() != 12) {
+                    if (rentBarcode.length() != 12) {
+                        System.out.println("Barcode must be 12 digits. Please reenter:");
+                    } else {
+                        System.out.println("Movie not found! Please reenter:");
+                    }
+                    rentBarcode = scanner.nextLine();
+                    movieToRent = movies.searchBarcode(rentBarcode); 
                 }
 
                 boolean isRented = false; 
                 for (int i = 0; i < rentalCount; i++) {
-                    if (rentals[i] != null && rentals[i].getMovie().barcode.equals(movieToRent.barcode)) { // check if the rental is not null and if movie is available to rent
+                    if (rentals[i] != null && rentals[i].getMovie().barcode.equals(movieToRent.barcode)) { // check if movie is available to rent
                         isRented = true;
-                        break;
                     }
                 }
 
@@ -101,6 +112,10 @@ public class Main {
             if (choice == 4) {
                 System.out.print("Enter customer phone number: ");
                 String returnPhone = scanner.nextLine();
+                if (!customers.contains(returnPhone) || returnPhone.length() != 10) {
+                    System.out.println("Customer does not exist or phone number is invalid. Please reenter.");
+                    returnPhone = scanner.nextLine();
+                }
                 System.out.print("Enter movie barcode: ");
                 String returnBarcode = scanner.nextLine();
 
@@ -116,7 +131,9 @@ public class Main {
                     }
                 }
                 if (!returned) {
-                    System.out.println("Rental record not found!");
+                    System.out.println("Rental record not found! Try again.");
+                    returnBarcode = scanner.nextLine();
+
                 }
             }
             if (choice == 5) {
