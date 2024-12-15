@@ -61,13 +61,13 @@ public class Main {
                     rentPhone = scanner.nextLine();
                 }
                 Customer customer = null;
-                CustomerList.Node current = customers.head;
+                CustomerList.Node current = customers.head; // starting from the head, traverse customerlist
                 while (current != null) {
-                    if (current.data.getPhone().equals(rentPhone)) {
+                    if (current.data.getPhone().equals(rentPhone)) { // checking rentphone in each node
                         customer = current.data;  // get the customer data (full name) according to their phone number
-                        break;
+                        break; // exit loop
                     }
-                    current = current.next;
+                    current = current.next; 
                 }
 
                 System.out.print("Enter movie barcode: ");
@@ -83,18 +83,6 @@ public class Main {
                     rentBarcode = scanner.nextLine();
                     movieToRent = movies.searchBarcode(rentBarcode); 
                 }
-
-                boolean isRented = false; 
-                for (int i = 0; i < rentalCount; i++) {
-                    if (rentals[i] != null && rentals[i].getMovie().barcode.equals(movieToRent.barcode)) { // check if movie is available to rent
-                        isRented = true;
-                    }
-                }
-
-                if (isRented) {
-                    System.out.println("This movie has already been rented. Try a different movie."); // if the movie has been rented
-                }
-
                 int movieCount = 0;
                 for (RentalList rental : rentals) {
                     if (rental != null && rental.getCustomer().getPhone().equals(rentPhone)) {
@@ -121,7 +109,7 @@ public class Main {
 
                 boolean returned = false;
                 for (int i = 0; i < rentalCount; i++) {
-                    if (rentals[i] != null && rentals[i].getCustomer().getPhone().equals(returnPhone) && rentals[i].getMovie().barcode.equals(returnBarcode)) {
+                    if (rentals[i] != null && rentals[i].getCustomer().getPhone().equals(returnPhone) && rentals[i].getMovie().barcode.equals(returnBarcode)) { // find and remove rental
                         Movie movieToReturn = rentals[i].getMovie();
                         rentals[i] = null; 
                         System.out.println("Movie returned!");
